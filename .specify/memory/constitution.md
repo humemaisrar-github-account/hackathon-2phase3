@@ -1,55 +1,91 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- SYNC IMPACT REPORT:
+Version change: 1.0.0 → 1.1.0
+Modified principles: None (new technology matrix section added)
+Added sections: Technology Matrix (Phase I, Phase II, Phase III+)
+Removed sections: None
+Templates requiring updates:
+- .specify/templates/plan-template.md ✅ updated
+- .specify/templates/spec-template.md ✅ updated
+- .specify/templates/tasks-template.md ✅ updated
+- .specify/templates/commands/*.md ⚠ pending
+Follow-up TODOs: None
+-->
+# Hackathon-02 Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### Phase-Based Technology Isolation
+Each development phase has strict technology boundaries that must be respected. Technologies introduced in later phases are prohibited until the appropriate phase. This ensures controlled complexity growth and proper foundation establishment.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### Minimal Viable Implementation
+Start with the simplest solution that meets requirements. Add complexity only when justified by specific functional or non-functional requirements. Prioritize working software over comprehensive features.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### Test-First Development (NON-NEGOTIABLE)
+All code must be developed using TDD methodology: Tests written → User approved → Tests fail → Then implement. The Red-Green-Refactor cycle is strictly enforced to ensure quality and prevent regressions.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### Observable Systems
+All implementations must include appropriate logging, monitoring, and debugging capabilities. Systems should be designed to be observable from the start, with structured logging and metrics collection.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### Clean Architecture
+Maintain separation of concerns with clear boundaries between different layers. Business logic should be independent of frameworks and external dependencies to ensure testability and maintainability.
 
-### [PRINCIPLE_6_NAME]
+### Incremental Delivery
+Features must be delivered incrementally with each phase building upon the previous one. Each increment should provide tangible value while maintaining system stability.
 
+## Technology Matrix
 
-[PRINCIPLE__DESCRIPTION]
+### Phase I: Foundation
+- Architecture: In-memory console application only
+- Backend: Python console application
+- Database: None (in-memory only)
+- Frontend: None
+- Authentication: Not allowed
+- Infrastructure: Local development only
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### Phase II: Full-Stack Web Application
+- Architecture: Full-stack web application
+- Backend: Python REST API
+- Database: Neon Serverless PostgreSQL
+- ORM/Data layer: SQLModel or equivalent
+- Frontend: Next.js (React, TypeScript)
+- Authentication: Better Auth (signup/signin)
+- Infrastructure: Web-ready deployment
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### Phase III and Later: Advanced Capabilities
+- Architecture: Advanced cloud infrastructure, agents, AI, orchestration
+- Backend: Scalable microservices
+- Database: Production-grade PostgreSQL with advanced features
+- Frontend: Enhanced user experience with advanced features
+- Authentication: Enterprise-grade identity management
+- Infrastructure: Cloud-native deployment with advanced monitoring
+- AI/Agent Frameworks: Allowed (not permitted in earlier phases)
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Phase-Specific Rules
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### Phase I Restrictions
+- No persistent storage beyond in-memory
+- No web frontend
+- No authentication
+- No external databases
+- Console-based interaction only
+
+### Phase II Permissions
+- Web frontend is allowed starting Phase II
+- Authentication is allowed starting Phase II
+- Neon PostgreSQL is allowed starting Phase II
+- Full-stack architecture permitted
+- External API integrations allowed
+
+### Phase III+ Permissions
+- AI and agent frameworks permitted (not allowed in earlier phases)
+- Advanced infrastructure patterns
+- Microservices architecture
+- Advanced monitoring and orchestration tools
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution serves as the authoritative technology policy for the project. All development activities must comply with the phase-specific technology matrix and restrictions. Amendments to this constitution must preserve phase isolation and follow the established versioning policy. Each phase must be completed successfully before advancing to the next phase.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+Technology decisions must align with the current phase requirements. Using technologies from future phases is prohibited until the appropriate phase begins. This ensures proper foundation building and controlled complexity introduction.
+
+**Version**: 1.1.0 | **Ratified**: 2025-01-23 | **Last Amended**: 2026-01-23
