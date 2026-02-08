@@ -1,5 +1,5 @@
 import { betterAuth } from "better-auth";
-import { nextJs } from "better-auth/next-js";
+import { toNextJsHandler } from "better-auth/next-js";
 
 // Initialize Better Auth with PostgreSQL configuration
 const auth = betterAuth({
@@ -41,7 +41,7 @@ const auth = betterAuth({
 });
 
 // Create Next.js API handler
-const handler = nextJs(auth);
+const handler = toNextJsHandler(auth);
 
 export default handler;
 
