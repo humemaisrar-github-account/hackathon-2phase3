@@ -42,12 +42,15 @@ const ChatInterface = ({ userId, onTaskUpdate }) => {
       console.log('Chat response:', response);
 
       // Add AI response to the chat
-      const aiMessage = {
+      const aiText = response.response || response.message || 'Done.';
+
+       const aiMessage = {
         id: Date.now() + 1,
-        text: response.response || response.message,
+        text: `${aiText}\n\n🔄 Please refresh the dashboard to see updates.`,
         sender: 'ai',
         timestamp: new Date().toISOString()
       };
+
 
       setMessages(prev => [...prev, aiMessage]);
 
@@ -93,7 +96,7 @@ const ChatInterface = ({ userId, onTaskUpdate }) => {
         text: error.response?.data?.detail || error.response?.data?.message || 'Sorry, I encountered an error processing your request. Please try again.',
         sender: 'ai',
         timestamp: new Date().toISOString()
-      };
+   };
 
       setMessages(prev => [...prev, errorMessage]);
     } finally {
